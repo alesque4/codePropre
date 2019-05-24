@@ -1,27 +1,32 @@
 package ex3;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class SavaneAfricaine {
+import ex3.animal.Animal;
+import ex3.animal.MammifereHerbivore;
 
-	private List<String> types;
-	private List<String> noms;
-	private List<String> comportements;
+public class SavaneAfricaine extends Zone<MammifereHerbivore> {
+
+	/** Masse moyenne en kg de nourriture consommée par 1 herbivore */
+	private static final double MASSE_NOURRITURE = 0;
 	
-	public void addAnimal(String typeAnimal, String nomAnimal, String comportement) {
-		types.add(typeAnimal);
-		noms.add(nomAnimal);
-		comportements.add(comportement);
+	public SavaneAfricaine(String nom) {
+		this.nom = nom;
+		animaux = new ArrayList<MammifereHerbivore>();
 	}
 	
-	public void afficherListeAnimaux(){
-		for (String nom: noms){
-			System.out.println(nom);
+	@Override
+	public double getPoids() {
+		return MASSE_NOURRITURE;
+	}
+
+	@Override
+	public void addAnimal(Animal animal) {
+		if(animal != null && animal instanceof MammifereHerbivore) {
+			animaux.add((MammifereHerbivore) animal);
 		}
 	}
+
 	
-	public int compterAnimaux(){
-		return noms.size();
-	}
 
 }

@@ -12,4 +12,5 @@ public abstract class Animal {
 		this.nom = nom;
 	}
 
+	public abstract String toString();
 }

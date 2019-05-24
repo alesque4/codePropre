@@ -1,26 +1,31 @@
 package ex3;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class ZoneCarnivore {
+import ex3.animal.Animal;
+import ex3.animal.MammifereCarnivore;
 
-	private List<String> types;
-	private List<String> noms;
-	private List<String> comportements;
+public class ZoneCarnivore extends Zone<MammifereCarnivore>{
+
+	/** Masse moyenne en kg de nourriture consommée par 1 carnivore */
+	private static final double MASSE_NOURRITURE = 10;
 	
-	public void addAnimal(String typeAnimal, String nomAnimal, String comportement) {
-		types.add(typeAnimal);
-		noms.add(nomAnimal);
-		comportements.add(comportement);
+	public ZoneCarnivore(String nom) {
+		this.nom = nom;
+		animaux = new ArrayList<MammifereCarnivore>();
 	}
 	
-	public void afficherListeAnimaux(){
-		for (String nom: noms){
-			System.out.println(nom);
+	@Override
+	public double getPoids() {
+		return MASSE_NOURRITURE;
+	}
+
+	@Override
+	public void addAnimal(Animal animal) {
+		if(animal != null && animal instanceof MammifereCarnivore) {
+			animaux.add((MammifereCarnivore) animal);
 		}
 	}
+
 	
-	public double calculerKgsNourritureParJour(){
-		return noms.size() * 10;
-	}
 }

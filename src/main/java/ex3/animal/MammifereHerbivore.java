@@ -6,4 +6,9 @@ public class MammifereHerbivore extends Animal {
 		this.setNom(nom);
 	}
 	
+	@Override
+	public String toString() {
+		return "Herbivore : "+getNom();
+	}
+	
 }

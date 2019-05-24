@@ -6,29 +6,33 @@ import ex3.animal.Animal;
 
 public abstract class Zone<T extends Animal> {
 
-	private List<T> animaux;
-	
+	protected String nom;
+	protected List<T> animaux;
 	
 	/**
 	 * Ajoute un animal dans la zone
 	 * @param animal l'animal à ajouter
 	 */
-	public abstract void addAnimal(T animal);
+	public abstract void addAnimal(Animal animal);
 	
 	/**
 	 * Affiche la liste des animaux
 	 */
-	public abstract void afficherListeAnimaux();
-	
+	public void afficherListeAnimaux() {
+		System.out.println("-"+nom+" :");
+		this.animaux.stream().forEach(a -> System.out.println(a));
+	}
 	
 	/**
 	 * Compte les animaux de cette zone
 	 * @return int le nombre d'animaux
 	 */
-	public abstract int compterAnimaux();
+	public int compterAnimaux() {
+		return animaux.size();
+	}
 	
 	/**
-	 * 
+	 * Donne le poids moyen journalier de nourriture pour un animal
 	 * @return
 	 */
 	public abstract double getPoids();
@@ -37,5 +41,16 @@ public abstract class Zone<T extends Animal> {
 	 * Calcule la nourriture par jour nécessaire pour cette zone
 	 * @return la somme
 	 */
-	public abstract double calculerKgsNourritureParJour();
+	public double calculerKgsNourritureParJour() {
+		return getPoids()*compterAnimaux();
+	}
+	
+	
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 }
