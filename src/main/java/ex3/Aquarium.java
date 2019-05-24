@@ -1,26 +1,44 @@
 package ex3;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Aquarium {
+import ex3.animal.Animal;
+import ex3.animal.Poisson;
 
-	private List<String> types;
-	private List<String> noms;
-	private List<String> comportements;
+public class Aquarium extends Zone{
+
+	private List<Poisson> poissons;
 	
-	public void addAnimal(String typeAnimal, String nomAnimal, String comportement) {
-		types.add(typeAnimal);
-		noms.add(nomAnimal);
-		comportements.add(comportement);
-	}
-	
-	public void afficherListeAnimaux(){
-		for (String nom: noms){
-			System.out.println(nom);
-		}
+	public Aquarium() {
+		poissons = new ArrayList<Poisson>();
 	}
 	
 	public double calculerKgsNourritureParJour(){
-		return noms.size() * 0.2;
+		return poissons.size() * 0.2;
+	}
+
+	@Override
+	public void addAnimal(Animal animal) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int compterAnimaux() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getPoids() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void afficherListeAnimaux() {
+		// TODO Auto-generated method stub
+		
 	}
 }

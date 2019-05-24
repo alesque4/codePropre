@@ -2,31 +2,40 @@ package ex3;
 
 import java.util.List;
 
-public abstract class Zone {
+import ex3.animal.Animal;
 
-	private List<String> types;
-	private List<String> noms;
-	private List<String> comportements;
+public abstract class Zone<T extends Animal> {
+
+	private List<T> animaux;
 	
-	public void addAnimal(String typeAnimal, String nomAnimal, String comportement) {
-		types.add(typeAnimal);
-		noms.add(nomAnimal);
-		comportements.add(comportement);
-	}
 	
-	public void afficherListeAnimaux(){
-		for (String nom: noms){
-			System.out.println(nom);
-		}
-	}
+	/**
+	 * Ajoute un animal dans la zone
+	 * @param animal l'animal à ajouter
+	 */
+	public abstract void addAnimal(T animal);
 	
-	public int compterAnimaux(){
-		return noms.size();
-	}
+	/**
+	 * Affiche la liste des animaux
+	 */
+	public abstract void afficherListeAnimaux();
 	
+	
+	/**
+	 * Compte les animaux de cette zone
+	 * @return int le nombre d'animaux
+	 */
+	public abstract int compterAnimaux();
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public abstract double getPoids();
 	
-	public double calculerKgsNourritureParJour(){
-		return noms.size() * getPoids();
-	}
+	/**
+	 * Calcule la nourriture par jour nécessaire pour cette zone
+	 * @return la somme
+	 */
+	public abstract double calculerKgsNourritureParJour();
 }
